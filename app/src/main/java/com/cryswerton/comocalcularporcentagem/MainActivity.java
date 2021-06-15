@@ -34,8 +34,12 @@ public class MainActivity extends AppCompatActivity {
 
         if(amountOfEmptyFields(campoTaxa, campoPrincipal, campoPorcentagem) >= 2){
             textoResposta.setTextColor(Color.RED);
-            textoResposta.setText("Você precisa preencher pelo menos 2 campos.");
-        }else{
+            textoResposta.setText("Você precisa preencher 2 campos.");
+        }else if(amountOfEmptyFields(campoTaxa, campoPrincipal, campoPorcentagem) == 0){
+            textoResposta.setTextColor(Color.RED);
+            textoResposta.setText("Você só pode preencher 2 campos.");
+        }
+        else{
             textoResposta.setTextColor(Color.BLUE);
             textoResposta.setText(createResponse(textoResposta, getFieldValue(campoTaxa), getFieldValue(campoPrincipal), getFieldValue(campoPorcentagem)));
         }

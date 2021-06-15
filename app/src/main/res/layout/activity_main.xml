@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:text="Principal (Ex.: R$ 100,00) :"
+        android:text="Capital (Ex.: R$ 100,00) :"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/campoPrincipal"
         app:layout_constraintStart_toStartOf="parent" />
@@ -99,6 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:text="Aguardando dados..."
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
