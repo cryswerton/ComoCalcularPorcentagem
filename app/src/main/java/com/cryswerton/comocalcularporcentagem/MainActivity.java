@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,10 +27,14 @@ public class MainActivity extends AppCompatActivity {
         EditText campoPorcentagem = findViewById(R.id.campoPorcentagem);
         TextView textoResposta = findViewById(R.id.textoResposta);
 
-        if(quantidadeCamposVazios(campoTaxa, campoPrincipal, campoPorcentagem) >= 2){
+        String i = campoTaxa.toString();
+        String C = campoPrincipal.toString();
+        String porcentagem = campoPorcentagem.toString();
+
+        if(amountOfEmptyFields(campoTaxa, campoPrincipal, campoPorcentagem) >= 2){
             textoResposta.setText("Você precisa preencher pelo menos 2 campos.");
         }else{
-            textoResposta.setText("");
+            textoResposta.setText(createResponse(textoResposta, getFieldValue(campoTaxa), getFieldValue(campoPrincipal), getFieldValue(campoPorcentagem)));
         }
 
 
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    private Integer quantidadeCamposVazios(EditText edt1, EditText edt2, EditText edt3){
+    private Integer amountOfEmptyFields(EditText edt1, EditText edt2, EditText edt3){
         int numeroDeCamposVazios = 0;
         if (isEmpty(edt1))
             numeroDeCamposVazios += 1;
@@ -55,5 +58,27 @@ public class MainActivity extends AppCompatActivity {
             numeroDeCamposVazios += 1;
 
         return numeroDeCamposVazios;
+    }
+
+    private Double getFieldValue(EditText editText){
+        String temp = editText.getText().toString();
+        double value = 0;
+        if (!temp.isEmpty())
+            value = Double.parseDouble(temp);
+
+        return value;
+    }
+
+    private String createResponse(TextView textView, double i, double c, double p){
+        Double taxa = i;
+        Double capital = c;
+        Double porcentagem = p;
+
+        String text = "Taxa = i; Capital = C; Porcentagem = p.\n\n" +
+                          "i = " + taxa.toString() + "(%)" +
+                        "   ; C = " + capital.toString() + "(R$)" +
+                        "   ; p = " + porcentagem.toString() + "(R$).";
+
+        return text;
     }
 }
