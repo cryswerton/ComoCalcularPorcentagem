@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +28,13 @@ public class MainActivity extends AppCompatActivity {
         EditText campoPorcentagem = findViewById(R.id.campoPorcentagem);
         TextView textoResposta = findViewById(R.id.textoResposta);
 
-        textoResposta.setText(quantidadeCamposVazios(campoTaxa, campoPrincipal, campoPorcentagem).toString());
+        if(quantidadeCamposVazios(campoTaxa, campoPrincipal, campoPorcentagem) >= 2){
+            textoResposta.setText("Você precisa preencher pelo menos 2 campos.");
+        }else{
+            textoResposta.setText("");
+        }
+
+
 
     }
 
