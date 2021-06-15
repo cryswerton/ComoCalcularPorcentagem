@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -32,8 +33,10 @@ public class MainActivity extends AppCompatActivity {
         String porcentagem = campoPorcentagem.toString();
 
         if(amountOfEmptyFields(campoTaxa, campoPrincipal, campoPorcentagem) >= 2){
+            textoResposta.setTextColor(Color.RED);
             textoResposta.setText("Você precisa preencher pelo menos 2 campos.");
         }else{
+            textoResposta.setTextColor(Color.BLUE);
             textoResposta.setText(createResponse(textoResposta, getFieldValue(campoTaxa), getFieldValue(campoPrincipal), getFieldValue(campoPorcentagem)));
         }
 
