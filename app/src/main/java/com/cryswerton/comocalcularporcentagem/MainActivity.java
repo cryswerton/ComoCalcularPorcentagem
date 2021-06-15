@@ -33,18 +33,13 @@ public class MainActivity extends AppCompatActivity {
         String porcentagem = campoPorcentagem.toString();
 
         if(amountOfEmptyFields(campoTaxa, campoPrincipal, campoPorcentagem) >= 2){
-            textoResposta.setTextColor(Color.RED);
-            textoResposta.setText("Você precisa preencher 2 campos.");
+            print(textoResposta, Color.RED, "Você precisa preencher 2 campos.");
         }else if(amountOfEmptyFields(campoTaxa, campoPrincipal, campoPorcentagem) == 0){
-            textoResposta.setTextColor(Color.RED);
-            textoResposta.setText("Você só pode preencher 2 campos.");
+            print(textoResposta, Color.RED, "Você só pode preencher 2 campos.");
         }
         else{
-            textoResposta.setTextColor(Color.BLUE);
-            textoResposta.setText(createResponse(textoResposta, getFieldValue(campoTaxa), getFieldValue(campoPrincipal), getFieldValue(campoPorcentagem)));
+            print(textoResposta, Color.BLUE, createResponse(textoResposta, getFieldValue(campoTaxa), getFieldValue(campoPrincipal), getFieldValue(campoPorcentagem)));
         }
-
-
 
     }
 
@@ -87,5 +82,10 @@ public class MainActivity extends AppCompatActivity {
                         "   ; p = " + porcentagem.toString() + "(R$).";
 
         return text;
+    }
+
+    private void print(TextView textView ,int color, String msg){
+        textView.setTextColor(color);
+        textView.setText(msg);
     }
 }
